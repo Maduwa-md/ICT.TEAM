@@ -275,3 +275,71 @@ body {
 }
 
 }
+
+.logo-circle {
+
+    width:120px;
+    height:120px;
+
+    margin:0 auto 25px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(255,255,255,0.15);
+
+    border:3px solid cyan;
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:
+    0 0 20px cyan,
+    0 0 40px blue;
+
+    animation: floating 3s infinite ease-in-out;
+
+}
+
+
+.logo-circle span {
+
+    font-size:45px;
+
+    font-weight:bold;
+
+    color:white;
+
+    text-shadow:
+    0 0 10px cyan,
+    0 0 20px blue;
+
+}
+
+
+
+@keyframes floating {
+
+    0% {
+
+        transform:translateY(0);
+
+    }
+
+
+    50% {
+
+        transform:translateY(-15px);
+
+    }
+
+
+    100% {
+
+        transform:translateY(0);
+
+    }
+
+}
