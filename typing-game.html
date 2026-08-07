@@ -6,6 +6,23 @@
 <title>ICT Typing Game</title>
 
 <style>
+    
+    #bg-video{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.game{
+    position: relative;
+    z-index: 1;
+    }
+
+    
 body{
     margin:0;
     font-family:Arial,sans-serif;
@@ -168,6 +185,7 @@ let timer=setInterval(countdown,1000);
     <video autoplay muted loop id="bg-video">
     <source src="background.mp4" type="video/mp4">
     </video>
+
 
 </body>
   </html>
