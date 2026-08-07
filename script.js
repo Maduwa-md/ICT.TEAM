@@ -1,28 +1,47 @@
-// Welcome Message
-window.onload = () => {
-    alert("👋 Welcome to Chamindu Sir - Anuradhapura");
-};
 
-// Typing Effect
-const text = "Welcome to Our Web Development Team";
-let i = 0;
+// Page Load Animation
 
-function typing() {
-    if (i < text.length) {
-        document.getElementById("typing").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typing, 80);
-    }
-}
+window.addEventListener("load", () => {
 
-typing();
+    const box = document.querySelector(".container");
+
+    box.style.opacity = "0";
+    box.style.transform = "translateY(50px)";
+
+
+    setTimeout(() => {
+
+        box.style.transition = "1s";
+
+        box.style.opacity = "1";
+
+        box.style.transform = "translateY(0)";
+
+
+    }, 300);
+
+
+});
+
+
 
 // Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function(e) {
+
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+    link.addEventListener("click", function(e){
+
         e.preventDefault();
-        document.querySelector(this.getAttribute("href")).scrollIntoView({
-            behavior: "smooth"
+
+
+        document.querySelector(this.getAttribute("href"))
+        .scrollIntoView({
+
+            behavior:"smooth"
+
         });
+
+
     });
+
 });
