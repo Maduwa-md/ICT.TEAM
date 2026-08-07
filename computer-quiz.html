@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Computer Parts Quiz</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#4facfe,#00f2fe);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+}
+
+.quiz{
+    background:#fff;
+    width:400px;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 20px rgba(0,0,0,0.3);
+    text-align:center;
+}
+
+button{
+    width:100%;
+    margin:8px 0;
+    padding:12px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    background:#007bff;
+    color:white;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0056b3;
+}
+
+#next{
+    background:green;
+}
+
+h2{
+    color:#007bff;
+}
+</style>
+
+</head>
+<body>
+
+<div class="quiz">
+
+<h2>💻 Computer Parts Quiz</h2>
+
+<h3 id="question"></h3>
+
+<div id="answers"></div>
+
+<p>Score: <span id="score">0</span></p>
+
+<button id="next" onclick="nextQuestion()">Next Question</button>
+
+</div>
+
+<script>
+
+const quiz=[
+{
+q:"Which part is called the brain of the computer?",
+a:["Monitor","CPU","Mouse","Keyboard"],
+c:1
+},
+{
+q:"Which device displays images?",
+a:["RAM","Monitor","CPU","Router"],
+c:1
+},
+{
+q:"Which device is used to type?",
+a:["Keyboard","Printer","Scanner","Speaker"],
+c:0
+},
+{
+q:"Which device prints documents?",
+a:["Mouse","Printer","Monitor","CPU"],
+c:1
+},
+{
+q:"Which part stores data temporarily?",
+a:["RAM","Hard Disk","Mouse","Monitor"],
+c:0
+}
+];
+
+let current=0;
+let score=0;
+
+const question=document.getElementById("question");
+const answers=document.getElementById("answers");
+const scoreText=document.getElementById("score");
+
+function loadQuestion(){
+
+question.innerHTML=quiz[current].q;
+
+answers.innerHTML="";
+
+quiz[current].a.forEach((item,index)=>{
+
+let btn=document.createElement("button");
+
+btn.innerHTML=item;
+
+btn.onclick=function(){
+
+if(index===quiz[current].c){
+
+score++;
+
+scoreText.innerHTML=score;
+
+alert("✅ Correct!");
+
+}else{
+
+alert("❌ Wrong!");
+
+}
+
+};
+
+answers.appendChild(btn);
+
+});
+
+}
+
+function nextQuestion(){
+
+current++;
+
+if(current>=quiz.length){
+
+alert("🎉 Quiz Finished!\nYour Score = "+score+"/"+quiz.length);
+
+location.reload();
+
+}else{
+
+loadQuestion();
+
+}
+
+}
+
+loadQuestion();
+
+</script>
+
+</body>
+  </html>
