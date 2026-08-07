@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memory Card Game</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#4facfe,#00f2fe);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.game{
+    text-align:center;
+}
+
+h1{
+    color:white;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(4,80px);
+    gap:10px;
+    justify-content:center;
+}
+
+.card{
+    width:80px;
+    height:80px;
+    background:#ffffff;
+    border-radius:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:35px;
+    cursor:pointer;
+    user-select:none;
+}
+
+.hidden{
+    background:#1565c0;
+    color:#1565c0;
+}
+</style>
+</head>
+
+<body>
+
+<div class="game">
+<h1>🃏 Memory Card Game</h1>
+
+<div class="grid" id="grid"></div>
+
+</div>
+
+<script>
+
+const emojis=[
+"🖥️","🖥️",
+"⌨️","⌨️",
+"🖱️","🖱️",
+"🖨️","🖨️",
+"💾","💾",
+"🌐","🌐",
+"💻","💻",
+"📡","📡"
+];
+
+emojis.sort(()=>0.5-Math.random());
+
+const grid=document.getElementById("grid");
+
+let first=null;
+let second=null;
+let lock=false;
+
+emojis.forEach(icon=>{
+
+let card=document.createElement("div");
+
+card.className="card hidden";
+
+card.innerHTML=icon;
+
+card.onclick=function(){
+
+if(lock||!card.classList.contains("hidden")) return;
+
+card.classList.remove("hidden");
+
+if(!first){
+
+first=card;
+
+}else{
+
+second=card;
+
+lock=true;
+
+if(first.innerHTML===second.innerHTML){
+
+first=null;
+second=null;
+lock=false;
+
+}else{
+
+setTimeout(()=>{
+
+first.classList.add("hidden");
+second.classList.add("hidden");
+
+first=null;
+second=null;
+lock=false;
+
+},800);
+
+}
+
+}
+
+};
+
+grid.appendChild(card);
+
+});
+
+</script>
+
+</body>
+  </html>
