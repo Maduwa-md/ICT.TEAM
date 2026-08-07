@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+body {
+    min-height: 100vh;
+    color: white;
+    overflow-x: hidden;
+}
+
+
+/* Background Video */
+
+#bg-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+
+/* Dark Overlay */
+
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.55);
+    z-index: -1;
+}
+
+
+/* Main Box */
+
+.container {
+    width: 90%;
+    max-width: 700px;
+    margin: auto;
+    padding-top: 150px;
+    text-align: center;
+}
+
+
+.container h1 {
+    font-size: 55px;
+    letter-spacing: 3px;
+    animation: glow 2s infinite alternate;
+}
+
+
+.container h2 {
+    margin-top: 15px;
+    font-size: 28px;
+}
+
+
+.container p {
+    margin: 25px 0;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+
+/* Buttons */
+
+.buttons a {
+
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+
+    background: rgba(255,255,255,0.15);
+
+    padding: 15px 30px;
+    margin: 10px;
+
+    border-radius: 30px;
+
+    backdrop-filter: blur(10px);
+
+    border: 1px solid white;
+
+    transition: 0.4s;
+}
+
+
+.buttons a:hover {
+
+    background: white;
+    color: black;
+
+    transform: scale(1.08);
+
+}
+
+
+/* Team Section */
+
+#team {
+
+    margin-top: 150px;
+
+    padding: 50px 20px;
+
+    text-align: center;
+
+    background: rgba(0,0,0,0.5);
+
+}
+
+
+#team h2 {
+
+    font-size: 35px;
+    margin-bottom: 20px;
+
+}
+
+
+/* Animation */
+
+@keyframes glow {
+
+    from {
+        text-shadow: 0 0 10px cyan;
+    }
+
+    to {
+        text-shadow: 0 0 30px blue;
+    }
+
+}
+
+
+
+/* Mobile */
+
+@media(max-width:600px){
+
+    .container {
+        padding-top: 120px;
+    }
+
+
+    .container h1 {
+
+        font-size: 40px;
+
+    }
+
+
+    .container h2 {
+
+        font-size: 22px;
+
+    }
+
+
+    .buttons a {
+
+        width: 90%;
+
+    }
+
+}
