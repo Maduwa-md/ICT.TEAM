@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keyboard Shortcut Quiz</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.quiz{
+    background:white;
+    width:420px;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 20px rgba(0,0,0,.3);
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    border:none;
+    border-radius:10px;
+    background:#007bff;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0056b3;
+}
+
+#next{
+    background:#28a745;
+}
+</style>
+
+</head>
+<body>
+
+<div class="quiz">
+
+<h2>⌨️ Keyboard Shortcut Quiz</h2>
+
+<h3 id="question"></h3>
+
+<div id="answers"></div>
+
+<p><b>Score: <span id="score">0</span></b></p>
+
+<button id="next" onclick="nextQuestion()">Next Question</button>
+
+</div>
+
+<script>
+
+const quiz=[
+{
+q:"Which shortcut is used for Copy?",
+a:["Ctrl + X","Ctrl + C","Ctrl + V","Ctrl + Z"],
+c:1
+},
+{
+q:"Which shortcut is used for Paste?",
+a:["Ctrl + P","Ctrl + C","Ctrl + V","Ctrl + A"],
+c:2
+},
+{
+q:"Which shortcut is used for Cut?",
+a:["Ctrl + X","Ctrl + C","Ctrl + V","Ctrl + Z"],
+c:0
+},
+{
+q:"Which shortcut is used for Undo?",
+a:["Ctrl + Z","Ctrl + Y","Ctrl + S","Ctrl + N"],
+c:0
+},
+{
+q:"Which shortcut is used for Redo?",
+a:["Ctrl + Y","Ctrl + X","Ctrl + D","Ctrl + L"],
+c:0
+},
+{
+q:"Which shortcut is used to Save a file?",
+a:["Ctrl + S","Ctrl + P","Ctrl + O","Ctrl + H"],
+c:0
+},
+{
+q:"Which shortcut opens a file?",
+a:["Ctrl + O","Ctrl + W","Ctrl + F","Ctrl + U"],
+c:0
+},
+{
+q:"Which shortcut creates a New document?",
+a:["Ctrl + N","Ctrl + T","Ctrl + M","Ctrl + B"],
+c:0
+},
+{
+q:"Which shortcut selects all?",
+a:["Ctrl + A","Ctrl + E","Ctrl + L","Ctrl + D"],
+c:0
+},
+{
+q:"Which shortcut finds text?",
+a:["Ctrl + G","Ctrl + F","Ctrl + R","Ctrl + H"],
+c:1
+},
+{
+q:"Which shortcut prints a document?",
+a:["Ctrl + P","Ctrl + Q","Ctrl + J","Ctrl + K"],
+c:0
+},
+{
+q:"Which shortcut closes the current window?",
+a:["Alt + F4","Ctrl + C","Ctrl + X","Ctrl + A"],
+c:0
+},
+{
+q:"Which shortcut switches between open applications?",
+a:["Alt + Tab","Ctrl + Tab","Shift + Tab","Windows + D"],
+c:0
+},
+{
+q:"Which shortcut locks the computer?",
+a:["Windows + L","Windows + E","Windows + R","Windows + P"],
+c:0
+},
+{
+q:"Which shortcut opens File Explorer?",
+a:["Windows + E","Windows + D","Windows + S","Windows + A"],
+c:0
+},
+{
+q:"Which shortcut opens the Run dialog box?",
+a:["Windows + R","Windows + F","Windows + U","Windows + O"],
+c:0
+},
+{
+q:"Which shortcut opens Task Manager directly?",
+a:["Ctrl + Shift + Esc","Ctrl + Alt + Del","Alt + Tab","Ctrl + T"],
+c:0
+},
+{
+q:"Which shortcut refreshes a page?",
+a:["F5","F1","F2","F3"],
+c:0
+},
+{
+q:"Which shortcut renames a selected file?",
+a:["F2","F4","F6","F8"],
+c:0
+},
+{
+q:"Which key opens the Help menu in many programs?",
+a:["F1","F5","Esc","Tab"],
+c:0
+},
+{
+q:"Which shortcut is used for Copy?",
+a:["Ctrl + X","Ctrl + C","Ctrl + V","Ctrl + Z"],
+c:1
+},
+{
+q:"Which shortcut is used for Paste?",
+a:["Ctrl + P","Ctrl + C","Ctrl + V","Ctrl + A"],
+c:2
+},
+{
+q:"Which shortcut is used for Undo?",
+a:["Ctrl + Z","Ctrl + S","Ctrl + N","Ctrl + Y"],
+c:0
+},
+{
+q:"Which shortcut selects all text?",
+a:["Ctrl + A","Ctrl + D","Ctrl + Q","Ctrl + F"],
+c:0
+},
+{
+q:"Which shortcut saves a file?",
+a:["Ctrl + X","Ctrl + S","Ctrl + C","Ctrl + B"],
+c:1
+}
+];
+
+let current=0;
+let score=0;
+
+const question=document.getElementById("question");
+const answers=document.getElementById("answers");
+const scoreText=document.getElementById("score");
+
+function loadQuestion(){
+
+question.innerHTML=quiz[current].q;
+answers.innerHTML="";
+
+quiz[current].a.forEach((ans,index)=>{
+
+let btn=document.createElement("button");
+btn.innerHTML=ans;
+
+btn.onclick=function(){
+
+if(index==quiz[current].c){
+alert("✅ Correct");
+score++;
+scoreText.innerHTML=score;
+}else{
+alert("❌ Wrong");
+}
+
+};
+
+answers.appendChild(btn);
+
+});
+
+}
+
+function nextQuestion(){
+
+current++;
+
+if(current>=quiz.length){
+alert("🎉 Quiz Finished!\nYour Score: "+score+"/"+quiz.length);
+location.reload();
+}else{
+loadQuestion();
+}
+
+}
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
