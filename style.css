@@ -17,12 +17,13 @@ body {
 
 #bg-video {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    top: 50%;
+    left: 50%;
+    width: auto;
     height: 100%;
+    transform: translate(-50%, -50%);
     object-fit: cover;
-    object-position: center center;
+    object-position: 50% center;
     z-index: -2;
 }
 
