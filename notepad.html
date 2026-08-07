@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Notepad</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#4facfe,#00f2fe);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.notepad{
+    width:90%;
+    max-width:700px;
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 10px 20px rgba(0,0,0,0.3);
+}
+
+h1{
+    text-align:center;
+    color:#007bff;
+}
+
+textarea{
+    width:100%;
+    height:350px;
+    padding:10px;
+    font-size:18px;
+    border:2px solid #007bff;
+    border-radius:10px;
+    resize:none;
+}
+
+.buttons{
+    margin-top:15px;
+    text-align:center;
+}
+
+button{
+    padding:12px 20px;
+    margin:5px;
+    border:none;
+    border-radius:10px;
+    background:#007bff;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0056b3;
+}
+</style>
+
+</head>
+<body>
+
+<div class="notepad">
+
+<h1>📝 Online Notepad</h1>
+
+<textarea id="note" placeholder="Write your ICT notes here..."></textarea>
+
+<div class="buttons">
+<button onclick="saveNote()">💾 Save</button>
+<button onclick="clearNote()">🗑 Clear</button>
+</div>
+
+</div>
+
+<script>
+const note=document.getElementById("note");
+
+note.value=localStorage.getItem("ictNote") || "";
+
+function saveNote(){
+localStorage.setItem("ictNote",note.value);
+alert("✅ Note Saved!");
+}
+
+function clearNote(){
+note.value="";
+localStorage.removeItem("ictNote");
+}
+</script>
+
+</body>
+  </html>
