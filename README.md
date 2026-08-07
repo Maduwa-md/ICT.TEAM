@@ -1,2 +1,0 @@
-# ICT.TEAM
-ICT.TEAM
