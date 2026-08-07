@@ -45,3 +45,24 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     });
 
 });
+const cards = document.querySelectorAll(".portfolio-card img");
+const preview = document.getElementById("preview");
+const previewImg = document.getElementById("preview-img");
+const closeBtn = document.querySelector(".close");
+
+cards.forEach(img => {
+    img.onclick = () => {
+        preview.style.display = "flex";
+        previewImg.src = img.src;
+    };
+});
+
+closeBtn.onclick = () => {
+    preview.style.display = "none";
+};
+
+preview.onclick = (e) => {
+    if (e.target === preview) {
+        preview.style.display = "none";
+    }
+};
